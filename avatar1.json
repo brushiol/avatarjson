@@ -1,0 +1,38 @@
+{
+  "Shirt": {
+    "ClassName": "Shirt"
+  },
+  "Pants": {
+    "ClassName": "Pants"
+  },
+  "Left Arm": {
+    "BrickColor": "Bright yellow"
+  },
+  "Right Arm": {
+    "BrickColor": "Bright yellow"
+  },
+  "tshirt": {
+    "ClassName": "ShirtGraphic",
+    "Graphic": "rbxasset://textures/Chat.png"
+  },
+  "Torso": {
+    "BrickColor": "Black"
+  },
+  "Head": {
+    "BrickColor": "Bright yellow"
+  },
+  "Right Leg": {
+    "BrickColor": "Bright green"
+  },
+  "Left Leg": {
+    "BrickColor": "Bright green"
+  },
+  "accessory": {
+    "ClassName": "Hat",
+    "Mesh": {
+      "ClassName": "SpecialMesh",
+      "MeshId": "rbxasset://fonts/head.mesh",
+      "TextureId": "rbxasset://sky/moon.jpg"
+    }
+  }
+}

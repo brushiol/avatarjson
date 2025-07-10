@@ -92,5 +92,5 @@ end)
 if not succ then
 	warn(err)
 end
-local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 210, 210, true)}
+local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 512, 512, true)}
 print(render[1])

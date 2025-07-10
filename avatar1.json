@@ -27,12 +27,15 @@
   "Left Leg": {
     "BrickColor": "Bright green"
   },
-  "accessory": {
+  "moon": {
     "ClassName": "Hat",
-    "Mesh": {
-      "ClassName": "SpecialMesh",
-      "MeshId": "rbxasset://fonts/head.mesh",
-      "TextureId": "rbxasset://sky/moon.jpg"
+    "Handle": {
+      "ClassName": "Part",
+      "Mesh": {
+        "ClassName": "SpecialMesh",
+        "MeshId": "rbxasset://fonts/head.mesh",
+        "TextureId": "rbxasset://sky/moon.jpg"
+      }
     }
   }
 }

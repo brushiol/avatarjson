@@ -104,5 +104,5 @@ if not succ then
 end
 
 --RENDER--
-local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 64, 64, true)}
+local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 32, 32, true)}
 print(render[1])

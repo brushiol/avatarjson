@@ -4,8 +4,9 @@ local plr = game.Players:CreateLocalPlayer(0)
 plr:LoadCharacter()
 local char = plr.Character or plr.CharacterAdded:Wait()
 local https = game:GetService("HttpService")
+https.HttpEnabled = true
 local site = "https://raw.githubusercontent.com/brushiol/avatarjson/refs/heads/main/avatar1.json"
-local appearance = https:JSONDecode(game:HttpGetAsync(site))
+local appearance = https:JSONDecode(https:GetAsync(site))
 --local classes = https:JSONDecode(https:GetAsync("https://setup.roblox.com/version-0f92b7995f2446f0-API-Dump.json"))
 
 --FUNCTIONS--
@@ -81,7 +82,7 @@ end
 
 --CHARACTER SETUP--
 local succ, err = pcall(function()
-	local avacont = Instance.new("Model")
+	local avacont = Instance.new("Model",game)
 	apply(appearance,avacont,true)
 	for i, v in pairs(GetDescendants(avacont)) do
 		v.Parent = char

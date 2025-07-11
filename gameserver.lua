@@ -104,5 +104,6 @@ if not succ then
 end
 
 --RENDER--
-local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 32, 32, true)}
-print(render[1])
+local size = 10
+local render = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, true)}
+print(render[1],size)

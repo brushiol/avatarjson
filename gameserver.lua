@@ -106,6 +106,6 @@ end
 
 --RENDER--
 local size = 10
+local url = "localhost:"..port
 local render = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, true)}
-print(render[1],size)
-https:GetAsync("http://localhost:"..port.."/render?data="..render[1])
+print(render[1],https:GetAsync("http://"..url.."/render?data="..render[1]))

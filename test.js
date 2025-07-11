@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 let port = 4299;
 let latest
-app.get('/save-image', (req, res) => {
+app.get('/render', (req, res) => {
     const b64 = req.query.data;
     if (!b64) return
     let bffr = Buffer.from(b64, 'base64');

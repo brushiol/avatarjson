@@ -3,10 +3,13 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 let port = 4299;
-let latest
-let imgs = {}
-app.get('/render', (req, res) => {
-    const b64 = req.query.data;
+let latest;
+let imgs = {};
+
+app.use(express.json());
+
+app.post('/render', (req, res) => {
+    const b64 = req.body.data;
     if (!b64) return
     latest = `render_${Date.now()}`;
     imgs[latest] = b64

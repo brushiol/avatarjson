@@ -8,10 +8,9 @@ let imgs = {}
 app.get('/render', (req, res) => {
     const b64 = req.query.data;
     if (!b64) return
-    let bffr = Buffer.from(b64, 'base64');
-    latest = `${Date.now()}`;
-    imgs[latest] = bffr
-    res.send(bffr);
+    latest = `render_${Date.now()}`;
+    imgs[latest] = b64
+    res.send(b64);
 });
 app.get('/latest', (req, res) => {
     if (!latest) return

@@ -43,7 +43,7 @@ end
 function apply(a,parent,start)
 	for i, v in pairs(a) do
 		--print(https:JSONEncode(v))
-		if start and char:FindFirstChild(i)  then
+		if start and char:FindFirstChild(i) then
 			parent = char
 			for ii, vv in pairs(v) do
 				if parent[i][ii] then 
@@ -83,7 +83,7 @@ end
 local succ, err = pcall(function()
 	local avacont = Instance.new("Model")
 	apply(appearance,avacont,true)
-	for i, v in pairs(GetDescendants(avacont))
+	for i, v in pairs(GetDescendants(avacont)) do
 		v.Parent = char
 		print(v.ClassName)
 		if v:IsA("Part") then

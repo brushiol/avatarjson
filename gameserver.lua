@@ -1,5 +1,3 @@
-game:GetService("ContentProvider"):SetBaseUrl("roblox.com")
-game:GetService("ScriptContext").ScriptsDisabled = true
 local plr = game.Players:CreateLocalPlayer(0)
 plr:LoadCharacter()
 local char = plr.Character or plr.CharacterAdded:Wait()
@@ -114,6 +112,7 @@ end
 local size = 64
 local ip = "localhost:"..port
 local url = "http://"..ip.."/render"
-local render = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, true)}[1]
+local click = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, true)}
+local render = click[1]
 local post = https:PostAsync(url, https:JSONEncode({data = render}))
 print(render,post)

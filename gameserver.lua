@@ -95,10 +95,10 @@ if not succ then
 end
 
 --RENDER--
-local size = 64
+local size = 512
 local ip = "localhost:"..port
 local url = "http://"..ip.."/render"
-local click = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, true)}
+local click = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, false)}
 local render = click[1]
 local post = https:PostAsync(url, https:JSONEncode({data = render}))
-print(render,post)
+print(render, post)

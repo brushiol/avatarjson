@@ -6,19 +6,7 @@ let port = 4299;
 let latest;
 let imgs = {};
 
-app.use(express.json());
-
-app.post('/render', (req, res) => {
-    const b64 = req.body.data;
-    if (!b64) return
-    latest = `render_${Date.now()}`;
-    imgs[latest] = b64
-    console.log("got render: "+latest)
-    res.send(b64);
-});
-
 app.get('/latest', (req, res) => {
-    if (!latest) return
     console.log("looking for latest")
     let b64 = imgs[latest];
     let html = `<!DOCTYPE html>
@@ -34,6 +22,16 @@ app.get('/latest', (req, res) => {
     res.send(html);
 });
 
-app.listen(port, function () {
+app.use(express.json());
+
+app.post('/render', (req, res) => {
+    const b64 = req.body.data;
+    if (!b64) return
+    latest = `render_${Date.now()}`;
+    imgs[latest] = b64
+    console.log("got render: "+latest)
+});
+
+app.listen(port, function() {
     console.log(`server running in ${port}`);
 });

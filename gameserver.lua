@@ -95,7 +95,7 @@ if not succ then
 end
 
 --RENDER--
-local size = 512
+local size = 128
 local ip = "localhost:"..port
 local url = "http://"..ip.."/render"
 local click = {game:GetService("ThumbnailGenerator"):Click("PNG", size, size, false)}

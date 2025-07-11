@@ -2,6 +2,7 @@ game:GetService("ContentProvider"):SetBaseUrl("roblox.com")
 game:GetService("ScriptContext").ScriptsDisabled = true
 local plr = game.Players:CreateLocalPlayer(0)
 plr:LoadCharacter()
+local char = plr.Character or plr.CharacterAdded:Wait()
 local https = game:GetService("HttpService")
 local site = "https://raw.githubusercontent.com/brushiol/avatarjson/refs/heads/main/avatar1.json"
 local appearance = https:JSONDecode(game:HttpGetAsync(site))
@@ -42,8 +43,8 @@ end
 function apply(a,parent,start)
 	for i, v in pairs(a) do
 		--print(https:JSONEncode(v))
-		if start and plr.Character:FindFirstChild(i)  then
-			parent = plr.Character
+		if start and char:FindFirstChild(i)  then
+			parent = char
 			for ii, vv in pairs(v) do
 				if parent[i][ii] then 
 					local new = vv
@@ -77,20 +78,29 @@ function ungroup(model, parent)
 		model:Destroy()
 	end
 end
---GAME--
+
+--CHARACTER SETUP--
 local succ, err = pcall(function()
 	local avacont = Instance.new("Model")
 	apply(appearance,avacont,true)
-	ungroup(avacont,plr.Character)
-	for i,v in pairs(plr.Character:GetChildren()) do
-		if v:IsA("Tool") then
-			plr.Character.Torso["Right Shoulder"].CurrentAngle = math.pi / 2
+	for i, v in pairs(GetDescendants(avacont))
+		v.Parent = char
+		if v:IsA("Part") then
+			v.CFrame = char.Head
 		end
 	end
-	--print(https:JSONEncode(GetDescendantsJSON(plr.Character)))
+	--ungroup(avacont,char)
+	for i,v in pairs(char:GetChildren()) do
+		if v:IsA("Tool") then
+			char.Torso["Right Shoulder"].CurrentAngle = math.pi / 2
+		end
+	end
+	--print(https:JSONEncode(GetDescendantsJSON(char)))
 end)
 if not succ then
 	warn(err)
 end
-local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 512, 512, true)}
+
+--RENDER--
+local render = {game:GetService("ThumbnailGenerator"):Click("PNG", 420, 420, true)}
 print(render[1])

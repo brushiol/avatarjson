@@ -85,6 +85,7 @@ local succ, err = pcall(function()
 	apply(appearance,avacont,true)
 	for i, v in pairs(GetDescendants(avacont))
 		v.Parent = char
+		print(v.ClassName)
 		if v:IsA("Part") then
 			v.CFrame = char.Head
 		end

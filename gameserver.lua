@@ -82,21 +82,7 @@ end
 
 --CHARACTER SETUP--
 local succ, err = pcall(function()
-	local avacont = Instance.new("Model",game)
-	apply(appearance,avacont,true)
-	for i, v in pairs(GetDescendants(avacont)) do
-		v.Parent = char
-		print(v.ClassName)
-		if v:IsA("Part") then
-			v.CFrame = char.Head
-		end
-	end
-	if #avacont:GetChildren() == 0 then
-		avacont:Destroy()
-	else
-		warn(#avacont:GetChildren())
-	end
-	--ungroup(avacont,char)
+	apply(appearance,char,true)
 	for i,v in pairs(char:GetChildren()) do
 		if v:IsA("Tool") then
 			char.Torso["Right Shoulder"].CurrentAngle = math.pi / 2

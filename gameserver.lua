@@ -19,27 +19,28 @@ function namefind(t,name)
 	end
 end
 
-local function CallOnChildren(Instance, FunctionToCall)
-	FunctionToCall(Instance)
-	for _, Child in next, Instance:GetChildren() do
-		CallOnChildren(Child, FunctionToCall)
-	end
+function GetDescendants(instance)
+    local descendants = {}
+    function recurse(obj)
+        for _, child in ipairs(obj:GetChildren()) do
+            descendants[#descendants+1] = child
+            recurse(child)
+        end
+    end
+    recurse(instance)
+    return descendants
 end
 
-local function GetDescendants(StartInstance)
-	local List = {}
-	CallOnChildren(StartInstance, function(Item)
-		List[#List+1] = Item;
-	end)
-	return List
-end
-
-local function GetDescendantsJSON(StartInstance)
-	local List = {}
-	CallOnChildren(StartInstance, function(Item)
-		List[#List+1] = {Name = Item.Name, ClassName = Item.ClassName, Parent = Item.Parent.Name};
-	end)
-	return List
+function GetDescendantsJSON(instance)
+    local descendants = {}
+    function recurse(obj)
+        for _, child in ipairs(obj:GetChildren()) do
+            descendants[#descendants+1] = {Name = child.Name, ClassName = child.ClassName, Parent = child.Parent.Name};
+            recurse(child)
+        end
+    end
+    recurse(instance)
+    return descendants
 end
 
 function apply(a,parent,start)
@@ -91,6 +92,11 @@ local succ, err = pcall(function()
 		if v:IsA("Part") then
 			v.CFrame = char.Head
 		end
+	end
+	if #avacont:GetChildren() == 0 then
+		avacont:Destroy()
+	else
+		warn(#avacont:GetChildren())
 	end
 	--ungroup(avacont,char)
 	for i,v in pairs(char:GetChildren()) do

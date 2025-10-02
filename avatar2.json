@@ -19,7 +19,7 @@
     "BrickColor": "Black"
   },
   "Head": {
-    "BrickColor": "Bright yellow"
+    "BrickColor": "Bright yellow",
     "Mesh": {
       "ClassName": "SpecialMesh",
       "MeshId": "rbxasset://fonts/head.mesh",
